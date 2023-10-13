@@ -212,9 +212,18 @@ public partial class @InputMaster: IInputActionCollection2, IDisposable
             ""id"": ""6feb3a47-2a9d-4203-af9a-ff1e39b5961b"",
             ""actions"": [
                 {
-                    ""name"": ""New action"",
+                    ""name"": ""Move"",
+                    ""type"": ""Value"",
+                    ""id"": ""84950c7c-9ae0-48ae-85f4-784ae8c3e8b8"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""SwitchAction"",
                     ""type"": ""Button"",
-                    ""id"": ""ac430247-37d1-45ff-b93f-aa2f350eb954"",
+                    ""id"": ""bd7fe49a-0ff9-402f-a350-5c5b7901f81b"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -223,13 +232,68 @@ public partial class @InputMaster: IInputActionCollection2, IDisposable
             ],
             ""bindings"": [
                 {
-                    ""name"": """",
-                    ""id"": ""e2d4f295-24e1-4b1a-88b8-7c25f6882ad8"",
-                    ""path"": """",
+                    ""name"": ""2D Vector"",
+                    ""id"": ""5d3631cd-5bad-44c7-927d-a5f2e71ccbc1"",
+                    ""path"": ""2DVector"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""New action"",
+                    ""action"": ""Move"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""7e839856-7754-487b-bf6f-0ede708dfafb"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""103abbd2-b586-434f-a0d3-3979ebf28080"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""9ec4a564-1cb7-49f7-99c0-ebce52f91cc7"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""827d3aea-5fd3-43a6-b613-996d314ad31f"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a648fdea-e5f5-4e84-aff8-05290c6d1e0d"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SwitchAction"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -248,7 +312,8 @@ public partial class @InputMaster: IInputActionCollection2, IDisposable
         m_PlayerControls2_SwitchAction = m_PlayerControls2.FindAction("SwitchAction", throwIfNotFound: true);
         // Player Controls 3
         m_PlayerControls3 = asset.FindActionMap("Player Controls 3", throwIfNotFound: true);
-        m_PlayerControls3_Newaction = m_PlayerControls3.FindAction("New action", throwIfNotFound: true);
+        m_PlayerControls3_Move = m_PlayerControls3.FindAction("Move", throwIfNotFound: true);
+        m_PlayerControls3_SwitchAction = m_PlayerControls3.FindAction("SwitchAction", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -418,12 +483,14 @@ public partial class @InputMaster: IInputActionCollection2, IDisposable
     // Player Controls 3
     private readonly InputActionMap m_PlayerControls3;
     private List<IPlayerControls3Actions> m_PlayerControls3ActionsCallbackInterfaces = new List<IPlayerControls3Actions>();
-    private readonly InputAction m_PlayerControls3_Newaction;
+    private readonly InputAction m_PlayerControls3_Move;
+    private readonly InputAction m_PlayerControls3_SwitchAction;
     public struct PlayerControls3Actions
     {
         private @InputMaster m_Wrapper;
         public PlayerControls3Actions(@InputMaster wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Newaction => m_Wrapper.m_PlayerControls3_Newaction;
+        public InputAction @Move => m_Wrapper.m_PlayerControls3_Move;
+        public InputAction @SwitchAction => m_Wrapper.m_PlayerControls3_SwitchAction;
         public InputActionMap Get() { return m_Wrapper.m_PlayerControls3; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -433,16 +500,22 @@ public partial class @InputMaster: IInputActionCollection2, IDisposable
         {
             if (instance == null || m_Wrapper.m_PlayerControls3ActionsCallbackInterfaces.Contains(instance)) return;
             m_Wrapper.m_PlayerControls3ActionsCallbackInterfaces.Add(instance);
-            @Newaction.started += instance.OnNewaction;
-            @Newaction.performed += instance.OnNewaction;
-            @Newaction.canceled += instance.OnNewaction;
+            @Move.started += instance.OnMove;
+            @Move.performed += instance.OnMove;
+            @Move.canceled += instance.OnMove;
+            @SwitchAction.started += instance.OnSwitchAction;
+            @SwitchAction.performed += instance.OnSwitchAction;
+            @SwitchAction.canceled += instance.OnSwitchAction;
         }
 
         private void UnregisterCallbacks(IPlayerControls3Actions instance)
         {
-            @Newaction.started -= instance.OnNewaction;
-            @Newaction.performed -= instance.OnNewaction;
-            @Newaction.canceled -= instance.OnNewaction;
+            @Move.started -= instance.OnMove;
+            @Move.performed -= instance.OnMove;
+            @Move.canceled -= instance.OnMove;
+            @SwitchAction.started -= instance.OnSwitchAction;
+            @SwitchAction.performed -= instance.OnSwitchAction;
+            @SwitchAction.canceled -= instance.OnSwitchAction;
         }
 
         public void RemoveCallbacks(IPlayerControls3Actions instance)
@@ -472,6 +545,7 @@ public partial class @InputMaster: IInputActionCollection2, IDisposable
     }
     public interface IPlayerControls3Actions
     {
-        void OnNewaction(InputAction.CallbackContext context);
+        void OnMove(InputAction.CallbackContext context);
+        void OnSwitchAction(InputAction.CallbackContext context);
     }
 }

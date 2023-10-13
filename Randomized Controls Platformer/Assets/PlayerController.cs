@@ -8,6 +8,9 @@ public class PlayerController : MonoBehaviour
     private InputMaster inputMaster;
     private PlayerInput playerInput;
     private Rigidbody2D RB;
+    private string tempActionMap;
+
+    List<string> actionMaps = new List<string>();
 
     public float moveSpeed;
 
@@ -19,10 +22,12 @@ public class PlayerController : MonoBehaviour
         playerInput = GetComponent<PlayerInput>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        
+        actionMaps.Add("Player Controls 1");
+        actionMaps.Add("Player Controls 2");
+        actionMaps.Add("Player Controls 3");
+        tempActionMap = actionMaps[Random.Range(0, actionMaps.Count)];
     }
 
     private void OnMove(InputValue inputValue)
@@ -32,14 +37,9 @@ public class PlayerController : MonoBehaviour
     }
     private void OnSwitchAction()
     {
-        if (playerInput.currentActionMap.name == "Player Controls 1")
-        {
-            playerInput.SwitchCurrentActionMap("Player Controls 2");
-        }
-        else
-        {
-            playerInput.SwitchCurrentActionMap("Player Controls 1");
-        }
-        
+        while (tempActionMap == playerInput.currentActionMap.name)
+            tempActionMap = actionMaps[Random.Range(0, actionMaps.Count)];
+
+        playerInput.SwitchCurrentActionMap(tempActionMap);        
     }
 }
