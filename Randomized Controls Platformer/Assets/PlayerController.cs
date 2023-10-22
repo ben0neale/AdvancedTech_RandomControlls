@@ -49,6 +49,10 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         RB.velocity = new Vector2(x * moveSpeed, RB.velocity.y);
+        if (transform.position.y < -5)
+        {
+            transform.position = new Vector3(-3, 3, 0);
+        }
     }
 
     private void OnMove(InputValue inputValue)
