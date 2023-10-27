@@ -44,6 +44,8 @@ public class PlayerController : MonoBehaviour
 
         controlsText.text = controls[0];
         tempActionMap = actionMaps[Random.Range(0, actionMaps.Count)];
+
+        
     }
 
     private void FixedUpdate()
@@ -53,6 +55,8 @@ public class PlayerController : MonoBehaviour
         {
             transform.position = new Vector3(-3, 3, 0);
         }
+
+        print(Input.GetJoystickNames());
     }
 
     private void OnMove(InputValue inputValue)
