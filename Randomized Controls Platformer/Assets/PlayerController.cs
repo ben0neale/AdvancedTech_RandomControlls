@@ -7,6 +7,10 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] GameObject startSpot;
+    [SerializeField] GameObject TimerOBJ;
+    Timer TimerRef;
+
     private InputMaster inputMaster;
     private PlayerInput playerInput;
     private Rigidbody2D RB;
@@ -30,6 +34,7 @@ public class PlayerController : MonoBehaviour
         playerInput = GetComponent<PlayerInput>();
 
         groundCheckRef = GetComponentInChildren<GroundCheck>();
+        TimerRef = TimerOBJ.GetComponent<Timer>();
     }
 
     private void Start()
@@ -38,14 +43,20 @@ public class PlayerController : MonoBehaviour
         actionMaps.Add("Player Controls 2");
         actionMaps.Add("Player Controls 3");
 
-        controls.Add("Controls:\nRight - D\nLeft - A\nJump - Space");
-        controls.Add("Controls:\nRight - A\nLeft - D\nJump - Space");
-        controls.Add("Controls:\nRight - W\nLeft - S\nJump - Space");
+        actionMaps.Add("Controller Controls 1");
+        actionMaps.Add("Controller Controls 2");
+        actionMaps.Add("Controller Controls 3");
+
+        controls.Add("Controls - Mouse And Keyboard:\nRight - D\nLeft - A\nJump - Space");
+        controls.Add("Controls - Mouse And Keyboard:\nRight - A\nLeft - D\nJump - Space");
+        controls.Add("Controls - Mouse And Keyboard:\nRight - W\nLeft - S\nJump - Space");
+
+        controls.Add("Controls - Xbox Controller:\nRight - Stick Right\nLeft - Stick Left\nJump - A");
+        controls.Add("Controls - Xbox Controller:\nRight - Stick Left\nLeft - Stick Right\nJump - Y");
+        controls.Add("Controls - Xbox Controller:\nRight - Stick Up\nLeft - Stick Down\nJump - Right Trigger");
 
         controlsText.text = controls[0];
-        tempActionMap = actionMaps[Random.Range(0, actionMaps.Count)];
-
-        
+        tempActionMap = actionMaps[Random.Range(0, actionMaps.Count)];  
     }
 
     private void FixedUpdate()
@@ -55,8 +66,6 @@ public class PlayerController : MonoBehaviour
         {
             transform.position = new Vector3(-3, 3, 0);
         }
-
-        print(Input.GetJoystickNames());
     }
 
     private void OnMove(InputValue inputValue)
@@ -85,5 +94,13 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Finish"))
+        {
+            transform.position = startSpot.transform.position;
+            TimerRef.ResetTimer();
+            OnSwitchAction();
+        }
+    }
 }

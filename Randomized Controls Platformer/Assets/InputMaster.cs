@@ -103,7 +103,7 @@ public partial class @InputMaster: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""left"",
                     ""id"": ""14252182-c787-4de4-bf95-34b19e9dbbc8"",
-                    ""path"": ""<Gamepad>/dpad/left"",
+                    ""path"": ""<Gamepad>/leftStick/left"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -114,7 +114,7 @@ public partial class @InputMaster: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""right"",
                     ""id"": ""00157f0f-533f-45d9-90ce-4225c203f75a"",
-                    ""path"": ""<Gamepad>/dpad/right"",
+                    ""path"": ""<Gamepad>/leftStick/right"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -137,6 +137,17 @@ public partial class @InputMaster: IInputActionCollection2, IDisposable
                     ""name"": """",
                     ""id"": ""d4295a95-7f0d-4340-8069-35753a5ebea5"",
                     ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e6cba654-93cf-4c79-8389-e6590d8b2447"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -369,6 +380,276 @@ public partial class @InputMaster: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Controller Controls 1"",
+            ""id"": ""466dc921-3ee1-4d2b-bc63-dcf87af0af6a"",
+            ""actions"": [
+                {
+                    ""name"": ""Move"",
+                    ""type"": ""Value"",
+                    ""id"": ""f89d2439-83d4-407e-9bb5-a5c82c201f66"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Jump"",
+                    ""type"": ""Button"",
+                    ""id"": ""08a6a40c-f520-409d-9f56-cd71d8f4e5bb"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SwitchAction"",
+                    ""type"": ""Button"",
+                    ""id"": ""c9969a9f-3bb2-44ff-9279-a5d6dff6f187"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""469128f6-c274-445a-bb21-cb445b18cf03"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""76347065-a54c-48ac-bf11-d5453f9b899e"",
+                    ""path"": ""<Keyboard>/enter"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SwitchAction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""Controller"",
+                    ""id"": ""a3a15127-8e34-4c78-a920-71dca328ce75"",
+                    ""path"": ""2DVector(mode=2)"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""b3b1c25a-fa22-40b4-823e-a992a3acc1a0"",
+                    ""path"": ""<Gamepad>/leftStick/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""63657c8e-4e64-4360-a2c4-b165e7b1c4ca"",
+                    ""path"": ""<Gamepad>/leftStick/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                }
+            ]
+        },
+        {
+            ""name"": ""Controller Controls 2"",
+            ""id"": ""0918cf01-280b-45d9-b69e-255730892b5f"",
+            ""actions"": [
+                {
+                    ""name"": ""Move"",
+                    ""type"": ""Value"",
+                    ""id"": ""919f2d09-0f87-4bb8-9cfb-2e971918d241"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Jump"",
+                    ""type"": ""Button"",
+                    ""id"": ""3c2ecf51-ed35-46a2-8853-f8f3b1961c25"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SwitchAction"",
+                    ""type"": ""Button"",
+                    ""id"": ""78d47acb-a1e1-4b44-99bd-4bfb93bd93fe"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""afe8be21-22fc-463c-a2d6-74d8fa28ac05"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""db4e8ee9-1c05-4898-8337-d4488782701f"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SwitchAction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""Controller"",
+                    ""id"": ""cac2821e-2054-457a-9b69-8df946139e8c"",
+                    ""path"": ""2DVector(mode=2)"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""dd432a12-37c8-4c92-aab9-09045b920b46"",
+                    ""path"": ""<Gamepad>/leftStick/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""0717593e-0b22-41d2-8a26-fa4266d8322c"",
+                    ""path"": ""<Gamepad>/leftStick/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                }
+            ]
+        },
+        {
+            ""name"": ""Controller Controls 3"",
+            ""id"": ""4026cba4-6f4f-46d9-bcb6-1e21871fa3a1"",
+            ""actions"": [
+                {
+                    ""name"": ""Move"",
+                    ""type"": ""Value"",
+                    ""id"": ""b97f0937-e1f6-40bc-8551-4c96bce9fba5"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Jump"",
+                    ""type"": ""Button"",
+                    ""id"": ""a9c72745-122f-430c-9329-2444296a24d6"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SwitchAction"",
+                    ""type"": ""Button"",
+                    ""id"": ""f7105915-d451-42a4-8016-1698dbb5cf72"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""7a51ba67-1124-47f2-aa79-c755161ba8c2"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SwitchAction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""Controller"",
+                    ""id"": ""d17dd03f-4cff-47c7-9db1-4cea1b4588de"",
+                    ""path"": ""2DVector(mode=2)"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""731e6330-2ff0-44c2-94b5-d853a3cee32f"",
+                    ""path"": ""<Gamepad>/leftStick/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""ba62ac93-e15f-4680-8262-ba75fa96343f"",
+                    ""path"": ""<Gamepad>/leftStick/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""08fd8ff3-c30f-4b4e-81c0-1f79e6eb5fdb"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -388,6 +669,21 @@ public partial class @InputMaster: IInputActionCollection2, IDisposable
         m_PlayerControls3_Move = m_PlayerControls3.FindAction("Move", throwIfNotFound: true);
         m_PlayerControls3_Jump = m_PlayerControls3.FindAction("Jump", throwIfNotFound: true);
         m_PlayerControls3_SwitchAction = m_PlayerControls3.FindAction("SwitchAction", throwIfNotFound: true);
+        // Controller Controls 1
+        m_ControllerControls1 = asset.FindActionMap("Controller Controls 1", throwIfNotFound: true);
+        m_ControllerControls1_Move = m_ControllerControls1.FindAction("Move", throwIfNotFound: true);
+        m_ControllerControls1_Jump = m_ControllerControls1.FindAction("Jump", throwIfNotFound: true);
+        m_ControllerControls1_SwitchAction = m_ControllerControls1.FindAction("SwitchAction", throwIfNotFound: true);
+        // Controller Controls 2
+        m_ControllerControls2 = asset.FindActionMap("Controller Controls 2", throwIfNotFound: true);
+        m_ControllerControls2_Move = m_ControllerControls2.FindAction("Move", throwIfNotFound: true);
+        m_ControllerControls2_Jump = m_ControllerControls2.FindAction("Jump", throwIfNotFound: true);
+        m_ControllerControls2_SwitchAction = m_ControllerControls2.FindAction("SwitchAction", throwIfNotFound: true);
+        // Controller Controls 3
+        m_ControllerControls3 = asset.FindActionMap("Controller Controls 3", throwIfNotFound: true);
+        m_ControllerControls3_Move = m_ControllerControls3.FindAction("Move", throwIfNotFound: true);
+        m_ControllerControls3_Jump = m_ControllerControls3.FindAction("Jump", throwIfNotFound: true);
+        m_ControllerControls3_SwitchAction = m_ControllerControls3.FindAction("SwitchAction", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -631,6 +927,192 @@ public partial class @InputMaster: IInputActionCollection2, IDisposable
         }
     }
     public PlayerControls3Actions @PlayerControls3 => new PlayerControls3Actions(this);
+
+    // Controller Controls 1
+    private readonly InputActionMap m_ControllerControls1;
+    private List<IControllerControls1Actions> m_ControllerControls1ActionsCallbackInterfaces = new List<IControllerControls1Actions>();
+    private readonly InputAction m_ControllerControls1_Move;
+    private readonly InputAction m_ControllerControls1_Jump;
+    private readonly InputAction m_ControllerControls1_SwitchAction;
+    public struct ControllerControls1Actions
+    {
+        private @InputMaster m_Wrapper;
+        public ControllerControls1Actions(@InputMaster wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Move => m_Wrapper.m_ControllerControls1_Move;
+        public InputAction @Jump => m_Wrapper.m_ControllerControls1_Jump;
+        public InputAction @SwitchAction => m_Wrapper.m_ControllerControls1_SwitchAction;
+        public InputActionMap Get() { return m_Wrapper.m_ControllerControls1; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(ControllerControls1Actions set) { return set.Get(); }
+        public void AddCallbacks(IControllerControls1Actions instance)
+        {
+            if (instance == null || m_Wrapper.m_ControllerControls1ActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_ControllerControls1ActionsCallbackInterfaces.Add(instance);
+            @Move.started += instance.OnMove;
+            @Move.performed += instance.OnMove;
+            @Move.canceled += instance.OnMove;
+            @Jump.started += instance.OnJump;
+            @Jump.performed += instance.OnJump;
+            @Jump.canceled += instance.OnJump;
+            @SwitchAction.started += instance.OnSwitchAction;
+            @SwitchAction.performed += instance.OnSwitchAction;
+            @SwitchAction.canceled += instance.OnSwitchAction;
+        }
+
+        private void UnregisterCallbacks(IControllerControls1Actions instance)
+        {
+            @Move.started -= instance.OnMove;
+            @Move.performed -= instance.OnMove;
+            @Move.canceled -= instance.OnMove;
+            @Jump.started -= instance.OnJump;
+            @Jump.performed -= instance.OnJump;
+            @Jump.canceled -= instance.OnJump;
+            @SwitchAction.started -= instance.OnSwitchAction;
+            @SwitchAction.performed -= instance.OnSwitchAction;
+            @SwitchAction.canceled -= instance.OnSwitchAction;
+        }
+
+        public void RemoveCallbacks(IControllerControls1Actions instance)
+        {
+            if (m_Wrapper.m_ControllerControls1ActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IControllerControls1Actions instance)
+        {
+            foreach (var item in m_Wrapper.m_ControllerControls1ActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_ControllerControls1ActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public ControllerControls1Actions @ControllerControls1 => new ControllerControls1Actions(this);
+
+    // Controller Controls 2
+    private readonly InputActionMap m_ControllerControls2;
+    private List<IControllerControls2Actions> m_ControllerControls2ActionsCallbackInterfaces = new List<IControllerControls2Actions>();
+    private readonly InputAction m_ControllerControls2_Move;
+    private readonly InputAction m_ControllerControls2_Jump;
+    private readonly InputAction m_ControllerControls2_SwitchAction;
+    public struct ControllerControls2Actions
+    {
+        private @InputMaster m_Wrapper;
+        public ControllerControls2Actions(@InputMaster wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Move => m_Wrapper.m_ControllerControls2_Move;
+        public InputAction @Jump => m_Wrapper.m_ControllerControls2_Jump;
+        public InputAction @SwitchAction => m_Wrapper.m_ControllerControls2_SwitchAction;
+        public InputActionMap Get() { return m_Wrapper.m_ControllerControls2; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(ControllerControls2Actions set) { return set.Get(); }
+        public void AddCallbacks(IControllerControls2Actions instance)
+        {
+            if (instance == null || m_Wrapper.m_ControllerControls2ActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_ControllerControls2ActionsCallbackInterfaces.Add(instance);
+            @Move.started += instance.OnMove;
+            @Move.performed += instance.OnMove;
+            @Move.canceled += instance.OnMove;
+            @Jump.started += instance.OnJump;
+            @Jump.performed += instance.OnJump;
+            @Jump.canceled += instance.OnJump;
+            @SwitchAction.started += instance.OnSwitchAction;
+            @SwitchAction.performed += instance.OnSwitchAction;
+            @SwitchAction.canceled += instance.OnSwitchAction;
+        }
+
+        private void UnregisterCallbacks(IControllerControls2Actions instance)
+        {
+            @Move.started -= instance.OnMove;
+            @Move.performed -= instance.OnMove;
+            @Move.canceled -= instance.OnMove;
+            @Jump.started -= instance.OnJump;
+            @Jump.performed -= instance.OnJump;
+            @Jump.canceled -= instance.OnJump;
+            @SwitchAction.started -= instance.OnSwitchAction;
+            @SwitchAction.performed -= instance.OnSwitchAction;
+            @SwitchAction.canceled -= instance.OnSwitchAction;
+        }
+
+        public void RemoveCallbacks(IControllerControls2Actions instance)
+        {
+            if (m_Wrapper.m_ControllerControls2ActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IControllerControls2Actions instance)
+        {
+            foreach (var item in m_Wrapper.m_ControllerControls2ActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_ControllerControls2ActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public ControllerControls2Actions @ControllerControls2 => new ControllerControls2Actions(this);
+
+    // Controller Controls 3
+    private readonly InputActionMap m_ControllerControls3;
+    private List<IControllerControls3Actions> m_ControllerControls3ActionsCallbackInterfaces = new List<IControllerControls3Actions>();
+    private readonly InputAction m_ControllerControls3_Move;
+    private readonly InputAction m_ControllerControls3_Jump;
+    private readonly InputAction m_ControllerControls3_SwitchAction;
+    public struct ControllerControls3Actions
+    {
+        private @InputMaster m_Wrapper;
+        public ControllerControls3Actions(@InputMaster wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Move => m_Wrapper.m_ControllerControls3_Move;
+        public InputAction @Jump => m_Wrapper.m_ControllerControls3_Jump;
+        public InputAction @SwitchAction => m_Wrapper.m_ControllerControls3_SwitchAction;
+        public InputActionMap Get() { return m_Wrapper.m_ControllerControls3; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(ControllerControls3Actions set) { return set.Get(); }
+        public void AddCallbacks(IControllerControls3Actions instance)
+        {
+            if (instance == null || m_Wrapper.m_ControllerControls3ActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_ControllerControls3ActionsCallbackInterfaces.Add(instance);
+            @Move.started += instance.OnMove;
+            @Move.performed += instance.OnMove;
+            @Move.canceled += instance.OnMove;
+            @Jump.started += instance.OnJump;
+            @Jump.performed += instance.OnJump;
+            @Jump.canceled += instance.OnJump;
+            @SwitchAction.started += instance.OnSwitchAction;
+            @SwitchAction.performed += instance.OnSwitchAction;
+            @SwitchAction.canceled += instance.OnSwitchAction;
+        }
+
+        private void UnregisterCallbacks(IControllerControls3Actions instance)
+        {
+            @Move.started -= instance.OnMove;
+            @Move.performed -= instance.OnMove;
+            @Move.canceled -= instance.OnMove;
+            @Jump.started -= instance.OnJump;
+            @Jump.performed -= instance.OnJump;
+            @Jump.canceled -= instance.OnJump;
+            @SwitchAction.started -= instance.OnSwitchAction;
+            @SwitchAction.performed -= instance.OnSwitchAction;
+            @SwitchAction.canceled -= instance.OnSwitchAction;
+        }
+
+        public void RemoveCallbacks(IControllerControls3Actions instance)
+        {
+            if (m_Wrapper.m_ControllerControls3ActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IControllerControls3Actions instance)
+        {
+            foreach (var item in m_Wrapper.m_ControllerControls3ActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_ControllerControls3ActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public ControllerControls3Actions @ControllerControls3 => new ControllerControls3Actions(this);
     public interface IPlayerControls1Actions
     {
         void OnMove(InputAction.CallbackContext context);
@@ -644,6 +1126,24 @@ public partial class @InputMaster: IInputActionCollection2, IDisposable
         void OnSwitchAction(InputAction.CallbackContext context);
     }
     public interface IPlayerControls3Actions
+    {
+        void OnMove(InputAction.CallbackContext context);
+        void OnJump(InputAction.CallbackContext context);
+        void OnSwitchAction(InputAction.CallbackContext context);
+    }
+    public interface IControllerControls1Actions
+    {
+        void OnMove(InputAction.CallbackContext context);
+        void OnJump(InputAction.CallbackContext context);
+        void OnSwitchAction(InputAction.CallbackContext context);
+    }
+    public interface IControllerControls2Actions
+    {
+        void OnMove(InputAction.CallbackContext context);
+        void OnJump(InputAction.CallbackContext context);
+        void OnSwitchAction(InputAction.CallbackContext context);
+    }
+    public interface IControllerControls3Actions
     {
         void OnMove(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
