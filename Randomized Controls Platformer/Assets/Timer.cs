@@ -9,12 +9,14 @@ public class Timer : MonoBehaviour
     [SerializeField] TextMeshProUGUI timer;
     [SerializeField] TextMeshProUGUI CountDown;
     [SerializeField] Canvas canvas;
+    ScoreBoard scoreboardRef;
     private float time = 0;
     private int characterSize = 3;
     bool CountDownFinished = false;
 
     void Start()
     {
+        scoreboardRef = GetComponent<ScoreBoard>();
         StartCoroutine(Count());
     }
 
@@ -32,13 +34,15 @@ public class Timer : MonoBehaviour
             {
                 characterSize = 4;
             }
+            timer.text = time.ToString().Substring(0, characterSize);
         }
-        timer.text = time.ToString().Substring(0,characterSize);   
+        
     }
 
     public void ResetTimer()
     {
         CountDownFinished = false;
+        scoreboardRef.ScoreboardUpdate(time);
         characterSize = 3;
         time = 0;
         StartCoroutine(Count());
