@@ -16,6 +16,6 @@ public class ScoreBoard : MonoBehaviour
 
     public void ScoreboardUpdate(float time)
     {
-        ScoreboardText.text = ScoreboardText.text + "\n" + time.ToString().Substring(0,4);
+        ScoreboardText.text = ScoreboardText.text + "\n"; //+ time.ToString().Substring(0,3);
     }
 }
