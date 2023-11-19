@@ -35,6 +35,7 @@ public class PlayerController : MonoBehaviour
     bool wiiControls2 = false;
 
     int random;
+    public bool KeyboardOnly;
 
 
     // Start is called before the first frame update
@@ -146,10 +147,15 @@ public class PlayerController : MonoBehaviour
     void Movement()
     {
         RB.velocity = new Vector2(x * moveSpeed, RB.velocity.y);
-        if (transform.position.y < -5)
+        if (transform.position.y < -8)
         {
-            transform.position = new Vector3(-3, 3, 0);
+            Respawn();
         }
+    }
+
+    void Respawn()
+    {
+        transform.position = startSpot.transform.position;
     }
 
     void Jump()
@@ -178,35 +184,44 @@ public class PlayerController : MonoBehaviour
     }
     private void OnSwitchAction()
     {
-        x = 0;
-        random = Random.Range(0, actionMaps.Count + 2);
-        print(random.ToString());
-        if (random < actionMaps.Count)
+        if (KeyboardOnly)
         {
-            tempActionMap = actionMaps[random];
-            wiiControls1 = false;
-            wiiControls2 = false;
-
-            while (tempActionMap == playerInput.currentActionMap.name)
-            {
-                random = Random.Range(0, actionMaps.Count);
-                tempActionMap = actionMaps[random];
-            }
-            playerInput.SwitchCurrentActionMap(tempActionMap);
+            random = 0;
+            playerInput.SwitchCurrentActionMap(actionMaps[0]);
         }
         else
         {
-            if (random == actionMaps.Count)
+            x = 0;
+            random = Random.Range(0, actionMaps.Count + 2);
+            print(random.ToString());
+            if (random < actionMaps.Count)
             {
+                tempActionMap = actionMaps[random];
+                wiiControls1 = false;
                 wiiControls2 = false;
-                wiiControls1 = true;
+
+                while (tempActionMap == playerInput.currentActionMap.name)
+                {
+                    random = Random.Range(0, actionMaps.Count);
+                    tempActionMap = actionMaps[random];
+                }
+                playerInput.SwitchCurrentActionMap(tempActionMap);
             }
             else
             {
-                wiiControls1 = false;
-                wiiControls2 = true;
+                if (random == actionMaps.Count)
+                {
+                    wiiControls2 = false;
+                    wiiControls1 = true;
+                }
+                else
+                {
+                    wiiControls1 = false;
+                    wiiControls2 = true;
+                }
             }
         }
+
 
         controlsText.text = controls[random];
         UpdateSprite(random);       
@@ -245,6 +260,10 @@ public class PlayerController : MonoBehaviour
             transform.position = startSpot.transform.position;
             OnSwitchAction();
             TimerRef.ResetTimer();
+        }
+        else if (collision.collider.CompareTag("Respawn"))
+        {
+            Respawn();
         }
     }
 }

@@ -2259,6 +2259,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1834695215}
     - target: {fileID: 266621921952178691, guid: bb0b503c54b604142b95a33b9a78ca04, type: 3}
+      propertyPath: KeyboardOnly
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 266621921952178691, guid: bb0b503c54b604142b95a33b9a78ca04, type: 3}
       propertyPath: controlsText
       value: 
       objectReference: {fileID: 1710779351}
