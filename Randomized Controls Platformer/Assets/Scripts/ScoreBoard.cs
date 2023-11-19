@@ -11,11 +11,11 @@ public class ScoreBoard : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        ScoreboardText.text = "Scoreboard";
+        ScoreboardText.text = "Scoreboard:";
     }
 
-    public void ScoreboardUpdate(float time)
+    public void ScoreboardUpdate(TextMeshProUGUI time)
     {
-        ScoreboardText.text = ScoreboardText.text + "\n"; //+ time.ToString().Substring(0,3);
+        ScoreboardText.text += "\n" + time.text;
     }
 }

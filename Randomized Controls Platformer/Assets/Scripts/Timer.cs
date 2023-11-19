@@ -41,8 +41,8 @@ public class Timer : MonoBehaviour
 
     public void ResetTimer()
     {
+        scoreboardRef.ScoreboardUpdate(timer);
         CountDownFinished = false;
-        scoreboardRef.ScoreboardUpdate(time);
         characterSize = 3;
         time = 0;
         StartCoroutine(Count());
