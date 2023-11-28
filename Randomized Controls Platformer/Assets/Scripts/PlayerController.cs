@@ -12,6 +12,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GameObject Controller;
     [SerializeField] GameObject Keyboard;
     [SerializeField] GameObject WiiRemote;
+    [SerializeField] GameObject highscoreTable;
+    [SerializeField] GameObject GameStateController;
+    GameStateController GameStateRef;
     Timer TimerRef;
 
     private InputMaster inputMaster;
@@ -36,16 +39,22 @@ public class PlayerController : MonoBehaviour
 
     int random;
     public bool KeyboardOnly;
+    HighScoreTable HST;
 
 
     // Start is called before the first frame update
     void Awake()
     {
+        GameStateRef = GameStateController.GetComponent<GameStateController>();
         RB = GetComponent<Rigidbody2D>();
         playerInput = GetComponent<PlayerInput>();
 
         groundCheckRef = GetComponentInChildren<GroundCheck>();
         TimerRef = TimerOBJ.GetComponent<Timer>();
+
+        HST = highscoreTable.GetComponent<HighScoreTable>();
+
+        highscoreTable.SetActive(false);
     }
 
     private void Start()
@@ -89,8 +98,11 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Movement();
-        if (WiimoteApi.WiimoteManager.Wiimotes.Count != 0)
+        if (TimerRef.CountDownFinished)
+        {
+            Movement();
+        }
+        if (WiimoteApi.WiimoteManager.Wiimotes.Count != 0 && TimerRef.CountDownFinished)
         {
             WiiRemoteMovement();
             WiiRemoteJump();
@@ -221,7 +233,18 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
-
+        if (random < 3)
+        {
+            HST.highscoretableValue = 1;
+        }
+        else if (random < 6)
+        {
+            HST.highscoretableValue = 2;
+        }
+        else if (random < 8)
+        {
+            HST.highscoretableValue = 3;
+        }
 
         controlsText.text = controls[random];
         UpdateSprite(random);       
@@ -250,7 +273,10 @@ public class PlayerController : MonoBehaviour
     }
     private void OnJump()
     {
-        Jump();
+        if (TimerRef.CountDownFinished)
+        {
+            Jump();
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -259,6 +285,7 @@ public class PlayerController : MonoBehaviour
         {
             transform.position = startSpot.transform.position;
             OnSwitchAction();
+            highscoreTable.SetActive(true);
             TimerRef.ResetTimer();
         }
         else if (collision.collider.CompareTag("Respawn"))

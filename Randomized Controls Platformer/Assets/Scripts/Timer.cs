@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -9,13 +10,18 @@ public class Timer : MonoBehaviour
     [SerializeField] TextMeshProUGUI timer;
     [SerializeField] TextMeshProUGUI CountDown;
     [SerializeField] Canvas canvas;
+    [SerializeField] GameObject TextInput;
     ScoreBoard scoreboardRef;
+    [SerializeField] GameObject HighScoreTable;
+    HighScoreTable highscoreTable;
     private float time = 0;
     private int characterSize = 3;
-    bool CountDownFinished = false;
+    public bool CountDownFinished = false;
 
     void Start()
     {
+        time = 0;
+        highscoreTable = HighScoreTable.GetComponent<HighScoreTable>();
         scoreboardRef = GetComponent<ScoreBoard>();
         StartCoroutine(Count());
     }
@@ -35,17 +41,23 @@ public class Timer : MonoBehaviour
                 characterSize = 4;
             }
             timer.text = time.ToString().Substring(0, characterSize);
-        }
-        
+        }       
     }
 
     public void ResetTimer()
     {
-        scoreboardRef.ScoreboardUpdate(timer);
+        //scoreboardRef.ScoreboardUpdate(timer);
         CountDownFinished = false;
         characterSize = 3;
-        time = 0;
-        StartCoroutine(Count());
+        //time = 0;
+        //StartCoroutine(Count());
+    }
+
+    public void UpdateLeaderboard(string name)
+    {
+        TextInput.SetActive(false);
+        highscoreTable.AddHighscoreEntry(time, name);
+        highscoreTable.LoadHighScoreTable();
     }
     IEnumerator Count()
     {
