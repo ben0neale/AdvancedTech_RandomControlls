@@ -3322,7 +3322,7 @@ PrefabInstance:
       objectReference: {fileID: 1679420036}
     - target: {fileID: 266621921952178691, guid: bb0b503c54b604142b95a33b9a78ca04, type: 3}
       propertyPath: moveSpeed
-      value: 5
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 266621921952178691, guid: bb0b503c54b604142b95a33b9a78ca04, type: 3}
       propertyPath: startSpot
@@ -3333,8 +3333,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1729015510}
     - target: {fileID: 266621921952178691, guid: bb0b503c54b604142b95a33b9a78ca04, type: 3}
+      propertyPath: jumpHeight
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 266621921952178691, guid: bb0b503c54b604142b95a33b9a78ca04, type: 3}
       propertyPath: KeyboardOnly
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 266621921952178691, guid: bb0b503c54b604142b95a33b9a78ca04, type: 3}
       propertyPath: controlsText
@@ -3355,6 +3359,10 @@ PrefabInstance:
     - target: {fileID: 4723403441004347586, guid: bb0b503c54b604142b95a33b9a78ca04, type: 3}
       propertyPath: m_AngularDrag
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4723403441004347586, guid: bb0b503c54b604142b95a33b9a78ca04, type: 3}
+      propertyPath: m_GravityScale
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6919697783121467564, guid: bb0b503c54b604142b95a33b9a78ca04, type: 3}
       propertyPath: m_Name
@@ -3657,7 +3665,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1427750196
 MonoBehaviour:
   m_ObjectHideFlags: 0
