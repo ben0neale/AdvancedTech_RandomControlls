@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GameObject GameStateController;
     GameStateController GameStateRef;
     Timer TimerRef;
+    bool CanMove = false;
 
     private InputMaster inputMaster;
     private PlayerInput playerInput;
@@ -94,15 +95,19 @@ public class PlayerController : MonoBehaviour
                 num = wiiRemote.ReadWiimoteData();
             } while (num > 0);
         }
-    }
 
+        if (TimerRef.CountDownFinished)
+            CanMove = true;
+        else
+            CanMove = false;
+    }
     private void FixedUpdate()
     {
-        if (TimerRef.CountDownFinished)
+        if (CanMove)
         {
             Movement();
         }
-        if (WiimoteApi.WiimoteManager.Wiimotes.Count != 0 && TimerRef.CountDownFinished)
+        if (WiimoteApi.WiimoteManager.Wiimotes.Count != 0 && CanMove)
         {
             WiiRemoteMovement();
             WiiRemoteJump();
@@ -273,7 +278,7 @@ public class PlayerController : MonoBehaviour
     }
     private void OnJump()
     {
-        if (TimerRef.CountDownFinished)
+        if (CanMove)
         {
             Jump();
         }

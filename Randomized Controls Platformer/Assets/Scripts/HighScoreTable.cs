@@ -40,6 +40,9 @@ public class HighScoreTable : MonoBehaviour
             Destroy(entryContainer.GetChild(i).gameObject);
         }
 
+        if (!PlayerPrefs.HasKey(PlayerPrefOptions[highscoretableValue]))
+            PlayerPrefs.SetString(PlayerPrefOptions[highscoretableValue], JsonUtility.ToJson("TEMP"));
+
         string jsonString = PlayerPrefs.GetString(PlayerPrefOptions[highscoretableValue]);
         Highscores highscores = JsonUtility.FromJson<Highscores>(jsonString);
 
@@ -98,6 +101,9 @@ public class HighScoreTable : MonoBehaviour
     {
         //Create highscore entry
         HighScoreEntry highscoreentry = new HighScoreEntry { time = time, name = name };
+
+        if (!PlayerPrefs.HasKey(PlayerPrefOptions[highscoretableValue]))
+            PlayerPrefs.SetString(PlayerPrefOptions[highscoretableValue], JsonUtility.ToJson("TEMP"));
 
         //Load Saved Highscores
         string jsonString = PlayerPrefs.GetString(PlayerPrefOptions[highscoretableValue]);
