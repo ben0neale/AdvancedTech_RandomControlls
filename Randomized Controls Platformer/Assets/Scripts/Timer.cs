@@ -23,7 +23,7 @@ public class Timer : MonoBehaviour
         time = 0;
         highscoreTable = HighScoreTable.GetComponent<HighScoreTable>();
         scoreboardRef = GetComponent<ScoreBoard>();
-        StartCoroutine(Count());
+        //StartCoroutine(Count());
     }
 
     // Update is called once per frame
@@ -59,7 +59,7 @@ public class Timer : MonoBehaviour
         highscoreTable.AddHighscoreEntry(time, name);
         highscoreTable.LoadHighScoreTable();
     }
-    IEnumerator Count()
+    public IEnumerator Count()
     {
         TextMeshProUGUI obj = Instantiate(CountDown,canvas.transform);
         obj.text = "3";

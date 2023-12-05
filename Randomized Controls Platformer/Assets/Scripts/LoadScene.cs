@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class LoadScene : MonoBehaviour
 {
+    [SerializeField] GameObject TextController;
     public void LoadCurrentScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
@@ -20,5 +21,10 @@ public class LoadScene : MonoBehaviour
     public void Quit()
     {
         Application.Quit();
+    }
+    public void StartLevel()
+    {
+        GameObject.FindGameObjectWithTag("PreGame").gameObject.SetActive(false);
+        StartCoroutine(TextController.GetComponent<Timer>().Count());
     }
 }

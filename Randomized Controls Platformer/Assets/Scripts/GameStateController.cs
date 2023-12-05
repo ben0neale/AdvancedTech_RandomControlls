@@ -19,9 +19,4 @@ public class GameStateController : MonoBehaviour
     {
         state = GameState.Play;
     }
-
-    private void Update()
-    {
-        Debug.Log(state);
-    }
 }
