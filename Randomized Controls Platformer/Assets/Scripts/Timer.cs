@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class Timer : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI timer;
+    [SerializeField] GameObject PreGame;
     [SerializeField] TextMeshProUGUI CountDown;
     [SerializeField] Canvas canvas;
     [SerializeField] GameObject TextInput;
@@ -20,6 +21,7 @@ public class Timer : MonoBehaviour
 
     void Start()
     {
+        PreGame.SetActive(true);
         time = 0;
         highscoreTable = HighScoreTable.GetComponent<HighScoreTable>();
         scoreboardRef = GetComponent<ScoreBoard>();
