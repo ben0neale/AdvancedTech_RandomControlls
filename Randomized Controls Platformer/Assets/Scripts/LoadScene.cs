@@ -9,4 +9,16 @@ public class LoadScene : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
+    public void LoadLevel()
+    {
+        SceneManager.LoadScene(1);
+    }
+    public void LoadMenu()
+    {
+        SceneManager.LoadScene(0);
+    }
+    public void Quit()
+    {
+        Application.Quit();
+    }
 }

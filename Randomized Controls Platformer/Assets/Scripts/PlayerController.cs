@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviour
 
     List<string> actionMaps = new List<string>();
     List<string> controls = new List<string>();
-    public TextMeshProUGUI controlsText;
+    public List<TextMeshProUGUI> controlsText;
 
     public float moveSpeed;
     private float x;
@@ -79,7 +79,8 @@ public class PlayerController : MonoBehaviour
         controls.Add("Controls - Wii Remote:\nRight - D-Pad Right\nLeft - D-Pad Left\nJump - 2");
         controls.Add("Controls - Wii Remote:\nRight - D-Pad Left\nLeft - D-Pad Right\nJump - B");
 
-        controlsText.text = controls[0];
+        controlsText[0].text = controls[0];
+        controlsText[1].text = controls[0];
         tempActionMap = actionMaps[Random.Range(0, actionMaps.Count)];
 
         InitWiiRemotes();
@@ -251,7 +252,8 @@ public class PlayerController : MonoBehaviour
             HST.highscoretableValue = 3;
         }
 
-        controlsText.text = controls[random];
+        controlsText[0].text = controls[random];
+        controlsText[1].text = controls[random];
         UpdateSprite(random);       
     }
 
