@@ -295,7 +295,7 @@ public class PlayerController : MonoBehaviour
             highscoreTable.SetActive(true);
             TimerRef.ResetTimer();
         }
-        else if (collision.collider.CompareTag("Respawn"))
+        else if (collision.gameObject.CompareTag("Respawn"))
         {
             Respawn();
         }
