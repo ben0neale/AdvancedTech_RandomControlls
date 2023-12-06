@@ -190,8 +190,8 @@ public class PlayerController : MonoBehaviour
     {
         if (groundCheckRef.grounded)
         {
+            animator.Play("Jump");
             RB.velocity = new Vector2(RB.velocity.x, jumpHeight);
-            print("jump");
         }
     }
 
