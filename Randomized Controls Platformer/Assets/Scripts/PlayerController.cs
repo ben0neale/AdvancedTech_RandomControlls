@@ -30,6 +30,7 @@ public class PlayerController : MonoBehaviour
     public List<TextMeshProUGUI> controlsText;
 
     public float moveSpeed;
+    public float maxSpeed;
     private float x;
     public float jumpHeight;
 
@@ -164,7 +165,12 @@ public class PlayerController : MonoBehaviour
 
     void Movement()
     {
-        RB.velocity = new Vector2(x * moveSpeed, RB.velocity.y);
+        
+        if (RB.velocity.x < maxSpeed)
+        {
+            RB.AddRelativeForce(new Vector2(x * moveSpeed, 0));
+        }
+       // RB.velocity = new Vector2(x * moveSpeed, RB.velocity.y);
         if (transform.position.y < -8)
         {
             Respawn();
