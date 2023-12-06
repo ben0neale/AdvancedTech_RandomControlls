@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GameObject WiiRemote;
     [SerializeField] GameObject highscoreTable;
     [SerializeField] GameObject GameStateController;
+    Animator animator;
     GameStateController GameStateRef;
     Timer TimerRef;
     bool CanMove = false;
@@ -57,6 +58,8 @@ public class PlayerController : MonoBehaviour
         HST = highscoreTable.GetComponent<HighScoreTable>();
 
         highscoreTable.SetActive(false);
+        
+        animator = GetComponent<Animator>();
     }
 
     private void Start()
@@ -102,6 +105,8 @@ public class PlayerController : MonoBehaviour
             CanMove = true;
         else
             CanMove = false;
+
+        animator.SetFloat("speed", Mathf.Abs(x));
     }
     private void FixedUpdate()
     {
@@ -165,7 +170,6 @@ public class PlayerController : MonoBehaviour
 
     void Movement()
     {
-        
         if (RB.velocity.x < maxSpeed)
         {
             RB.AddRelativeForce(new Vector2(x * moveSpeed, 0));
