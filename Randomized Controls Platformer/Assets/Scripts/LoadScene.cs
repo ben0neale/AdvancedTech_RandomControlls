@@ -18,6 +18,11 @@ public class LoadScene : MonoBehaviour
     {
         SceneManager.LoadScene(0);
     }
+
+    public void LoadInfo()
+    {
+        SceneManager.LoadScene(2);
+    }
     public void Quit()
     {
         Application.Quit();
