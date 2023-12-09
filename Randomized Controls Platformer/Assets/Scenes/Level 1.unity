@@ -5534,6 +5534,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 122838073}
     - target: {fileID: 266621921952178691, guid: bb0b503c54b604142b95a33b9a78ca04, type: 3}
+      propertyPath: KeyboardOnly
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 266621921952178691, guid: bb0b503c54b604142b95a33b9a78ca04, type: 3}
       propertyPath: highscoreTable
       value: 
       objectReference: {fileID: 1427750195}
@@ -5556,6 +5560,14 @@ PrefabInstance:
     - target: {fileID: 6919697783121467564, guid: bb0b503c54b604142b95a33b9a78ca04, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 7267202773693028107, guid: bb0b503c54b604142b95a33b9a78ca04, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8220566183019593442, guid: bb0b503c54b604142b95a33b9a78ca04, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9033890432567031285, guid: bb0b503c54b604142b95a33b9a78ca04, type: 3}
       propertyPath: m_LocalPosition.x

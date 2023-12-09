@@ -67,7 +67,7 @@ public class PlayerController : MonoBehaviour
         actionMaps.Add("Player Controls 1");
         actionMaps.Add("Player Controls 2");
         actionMaps.Add("Player Controls 3");
-
+        
         actionMaps.Add("Controller Controls 1");
         actionMaps.Add("Controller Controls 2");
         actionMaps.Add("Controller Controls 3");
@@ -85,7 +85,7 @@ public class PlayerController : MonoBehaviour
 
         controlsText[0].text = controls[0];
         controlsText[1].text = controls[0];
-        tempActionMap = actionMaps[Random.Range(0, actionMaps.Count)];
+        //tempActionMap = actionMaps[Random.Range(0, actionMaps.Count)];
 
         InitWiiRemotes();
         OnSwitchAction();
@@ -212,16 +212,33 @@ public class PlayerController : MonoBehaviour
     }
     private void OnSwitchAction()
     {
+        print(UseController.KM);
+        print(UseController.Controller);
+        print(UseController.Wii);
         if (KeyboardOnly)
         {
-            random = 0;
-            playerInput.SwitchCurrentActionMap(actionMaps[0]);
+            random = Random.Range(0, 3);
+            playerInput.SwitchCurrentActionMap(actionMaps[random]);
         }
         else
         {
             x = 0;
-            random = Random.Range(0, actionMaps.Count + 2);
+            if (UseController.Wii)
+                random = Random.Range(0, actionMaps.Count + 2);
+            else
+                random = Random.Range(0, actionMaps.Count);
+
             print(random.ToString());
+            if (random < 3 && !UseController.KM)
+            {
+                random = -1;
+                OnSwitchAction();
+            }
+            else if (random < 6 && !UseController.Controller)
+            {
+                random = -1;
+                OnSwitchAction();
+            }
             if (random < actionMaps.Count)
             {
                 tempActionMap = actionMaps[random];
