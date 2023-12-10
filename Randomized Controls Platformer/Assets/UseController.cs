@@ -1,25 +1,62 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UseController : MonoBehaviour
 {
-    public static bool KM = true;
-    public static bool Controller = true;
-    public static bool Wii = true;
+    [SerializeField] Toggle KMToggle;
+    [SerializeField] Toggle ControllerToggle;
+    [SerializeField] Toggle WiiToggle;
 
+    public static int KM = 1;
+    public static int Controller = 1;
+    public static int Wii = 1;
+
+    private void Awake()
+    {
+        if (PlayerPrefs.GetInt("UseKM") == 1)
+            KMToggle.isOn = true;
+        else
+            KMToggle.isOn = false;
+        if (PlayerPrefs.GetInt("UseController") == 1)
+            ControllerToggle.isOn = true;
+        else
+            ControllerToggle.isOn = false;
+        if (PlayerPrefs.GetInt("UseWii") == 1)
+            WiiToggle.isOn = true;
+        else
+            WiiToggle.isOn = false;
+
+        Wii = PlayerPrefs.GetInt("UseWii");
+        KM = PlayerPrefs.GetInt("UseKM");
+        Controller = PlayerPrefs.GetInt("UseController");
+    }
     public void ToggleWii()
     {
-        Wii = !Wii;
+        if (WiiToggle.isOn)
+            Wii = 1;
+        else
+            Wii = -1;
+
+        PlayerPrefs.SetInt("UseWii", Wii);
     }
 
     public void ToggleKM()
     {
-        KM = !KM;
+        if (KMToggle.isOn)
+            KM = 1;
+        else
+            KM = -1;
+        PlayerPrefs.SetInt("UseKM", KM);
     }
 
     public void ToggleController()
     {
-        Controller = !Controller;
+        if (ControllerToggle.isOn)
+            Controller = 1;
+        else
+            Controller = -1;
+        PlayerPrefs.SetInt("UseController", Controller);
     }
 }

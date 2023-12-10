@@ -2234,6 +2234,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f0b3a4775f5cfe4594c0e6a90dd014b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  KMToggle: {fileID: 753800355}
+  ControllerToggle: {fileID: 1425411620}
+  WiiToggle: {fileID: 185962115}
 --- !u!1 &1940973395
 GameObject:
   m_ObjectHideFlags: 0

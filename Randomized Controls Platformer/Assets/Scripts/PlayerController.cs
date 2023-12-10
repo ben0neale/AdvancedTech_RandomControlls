@@ -129,7 +129,6 @@ public class PlayerController : MonoBehaviour
             wiiRemote = WiimoteApi.WiimoteManager.Wiimotes[0];
             foreach (WiimoteApi.Wiimote remote in WiimoteApi.WiimoteManager.Wiimotes)
             {
-                print("Connected");
                 remote.SendPlayerLED(true, false, true, false);
             }
 
@@ -212,9 +211,7 @@ public class PlayerController : MonoBehaviour
     }
     private void OnSwitchAction()
     {
-        print(UseController.KM);
-        print(UseController.Controller);
-        print(UseController.Wii);
+        x = 0;
         if (KeyboardOnly)
         {
             random = Random.Range(0, 3);
@@ -222,23 +219,8 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            x = 0;
-            if (UseController.Wii)
-                random = Random.Range(0, actionMaps.Count + 2);
-            else
-                random = Random.Range(0, actionMaps.Count);
+            random = GetRandom();
 
-            print(random.ToString());
-            if (random < 3 && !UseController.KM)
-            {
-                random = -1;
-                OnSwitchAction();
-            }
-            else if (random < 6 && !UseController.Controller)
-            {
-                random = -1;
-                OnSwitchAction();
-            }
             if (random < actionMaps.Count)
             {
                 tempActionMap = actionMaps[random];
@@ -247,7 +229,7 @@ public class PlayerController : MonoBehaviour
 
                 while (tempActionMap == playerInput.currentActionMap.name)
                 {
-                    random = Random.Range(0, actionMaps.Count);
+                    random = GetRandom();
                     tempActionMap = actionMaps[random];
                 }
                 playerInput.SwitchCurrentActionMap(tempActionMap);
@@ -283,7 +265,38 @@ public class PlayerController : MonoBehaviour
         controlsText[1].text = controls[random];
         UpdateSprite(random);       
     }
+    
+    int GetRandom()
+    {
+        int x = -1;
+        Debug.Log("keyboard " + PlayerPrefs.GetInt("UseKM"));
+        Debug.Log("controller " + PlayerPrefs.GetInt("UseController"));
+        Debug.Log("WIi " + PlayerPrefs.GetInt("UseWii"));
+        if (PlayerPrefs.GetInt("UseWii") == 1 && PlayerPrefs.GetInt("UseController") == 1 && PlayerPrefs.GetInt("UseKM") == 1)
+            x = Random.Range(0, actionMaps.Count + 2);
+        else if (PlayerPrefs.GetInt("UseController") == 1 && PlayerPrefs.GetInt("UseKM") == 1)
+            x = Random.Range(0, actionMaps.Count);
+        else if (PlayerPrefs.GetInt("UseWii") == 1 && PlayerPrefs.GetInt("UseController") == 1)
+            x = Random.Range(3, actionMaps.Count + 2);
+        else if (PlayerPrefs.GetInt("UseWii") == 1 && PlayerPrefs.GetInt("UseKM") == 1)
+        {
+            int rand = Random.Range(1, 3);
+            if (rand == 1)
+                x = Random.Range(0, 3);
+            else
+                x = Random.Range(actionMaps.Count, actionMaps.Count + 2);
+        }
+        else if (PlayerPrefs.GetInt("UseKM") == 1)
+            x = Random.Range(0, 3);
+        else if (PlayerPrefs.GetInt("UseController") == 1)
+            x = Random.Range(3, 6);
+        else if (PlayerPrefs.GetInt("UseWii") == 1)
+            x = Random.Range(actionMaps.Count, actionMaps.Count + 2);
 
+        Debug.Log(x);
+        return x;
+        
+    }
     void UpdateSprite(int _random)
     {
         if (_random <= 2)

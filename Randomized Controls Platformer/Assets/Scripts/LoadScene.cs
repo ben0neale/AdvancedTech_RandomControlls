@@ -6,13 +6,15 @@ using UnityEngine.SceneManagement;
 public class LoadScene : MonoBehaviour
 {
     [SerializeField] GameObject TextController;
+
     public void LoadCurrentScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
     public void LoadLevel()
     {
-        SceneManager.LoadScene(1);
+        if (PlayerPrefs.GetInt("UseKM") == 1 || PlayerPrefs.GetInt("UseController") == 1 || PlayerPrefs.GetInt("UseWii") == 1)
+            SceneManager.LoadScene(1);      
     }
     public void LoadMenu()
     {
