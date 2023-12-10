@@ -39,32 +39,31 @@ public class HighScoreTable : MonoBehaviour
         {
             Destroy(entryContainer.GetChild(i).gameObject);
         }
+        if (PlayerPrefs.HasKey(PlayerPrefOptions[highscoretableValue]))
+        { 
+            string jsonString = PlayerPrefs.GetString(PlayerPrefOptions[highscoretableValue]);
+            Highscores highscores = JsonUtility.FromJson<Highscores>(jsonString);
 
-        if (!PlayerPrefs.HasKey(PlayerPrefOptions[highscoretableValue]))
-            PlayerPrefs.SetString(PlayerPrefOptions[highscoretableValue], JsonUtility.ToJson("TEMP"));
-
-        string jsonString = PlayerPrefs.GetString(PlayerPrefOptions[highscoretableValue]);
-        Highscores highscores = JsonUtility.FromJson<Highscores>(jsonString);
-
-        //sort entry list by score
-        for (int i = 0; i < highscores.highscoreEntryList.Count; i++)
-        {
-            for (int j = i + 1; j < highscores.highscoreEntryList.Count; j++)
+            //sort entry list by score
+            for (int i = 0; i < highscores.highscoreEntryList.Count; i++)
             {
-                if (highscores.highscoreEntryList[j].time < highscores.highscoreEntryList[i].time)
+                for (int j = i + 1; j < highscores.highscoreEntryList.Count; j++)
                 {
-                    //swap
-                    HighScoreEntry temp = highscores.highscoreEntryList[i];
-                    highscores.highscoreEntryList[i] = highscores.highscoreEntryList[j];
-                    highscores.highscoreEntryList[j] = temp;
+                    if (highscores.highscoreEntryList[j].time < highscores.highscoreEntryList[i].time)
+                    {
+                        //swap
+                        HighScoreEntry temp = highscores.highscoreEntryList[i];
+                        highscores.highscoreEntryList[i] = highscores.highscoreEntryList[j];
+                        highscores.highscoreEntryList[j] = temp;
+                    }
                 }
             }
-        }
 
-        highscoreEntryTransformList = new List<Transform>();
-        foreach (HighScoreEntry entry in highscores.highscoreEntryList)
-        {
-            CreateHighscoreEntryTransform(entry, entryContainer, highscoreEntryTransformList);
+            highscoreEntryTransformList = new List<Transform>();
+            foreach (HighScoreEntry entry in highscores.highscoreEntryList)
+            {
+                CreateHighscoreEntryTransform(entry, entryContainer, highscoreEntryTransformList);
+            }
         }
     }
 
@@ -103,7 +102,10 @@ public class HighScoreTable : MonoBehaviour
         HighScoreEntry highscoreentry = new HighScoreEntry { time = time, name = name };
 
         if (!PlayerPrefs.HasKey(PlayerPrefOptions[highscoretableValue]))
-            PlayerPrefs.SetString(PlayerPrefOptions[highscoretableValue], JsonUtility.ToJson("TEMP"));
+        {
+            HighScoreEntry temp = new HighScoreEntry { time = 00, name = "Test" };
+            PlayerPrefs.SetString(PlayerPrefOptions[highscoretableValue], JsonUtility.ToJson(temp));
+        }
 
         //Load Saved Highscores
         string jsonString = PlayerPrefs.GetString(PlayerPrefOptions[highscoretableValue]);

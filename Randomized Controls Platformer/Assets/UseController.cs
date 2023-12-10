@@ -15,22 +15,30 @@ public class UseController : MonoBehaviour
 
     private void Awake()
     {
-        if (PlayerPrefs.GetInt("UseKM") == 1)
-            KMToggle.isOn = true;
-        else
-            KMToggle.isOn = false;
-        if (PlayerPrefs.GetInt("UseController") == 1)
-            ControllerToggle.isOn = true;
-        else
-            ControllerToggle.isOn = false;
-        if (PlayerPrefs.GetInt("UseWii") == 1)
-            WiiToggle.isOn = true;
-        else
-            WiiToggle.isOn = false;
-
-        Wii = PlayerPrefs.GetInt("UseWii");
-        KM = PlayerPrefs.GetInt("UseKM");
-        Controller = PlayerPrefs.GetInt("UseController");
+        if (PlayerPrefs.HasKey("UseKM"))
+        {
+            if (PlayerPrefs.GetInt("UseKM") == 1)
+                KMToggle.isOn = true;
+            else
+                KMToggle.isOn = false;
+            KM = PlayerPrefs.GetInt("UseKM");
+        }
+        if (PlayerPrefs.HasKey("UseController"))
+        {
+            if (PlayerPrefs.GetInt("UseController") == 1)
+                ControllerToggle.isOn = true;
+            else
+                ControllerToggle.isOn = false;
+            Controller = PlayerPrefs.GetInt("UseController");
+        }
+        if (PlayerPrefs.HasKey("UseWii"))
+        {
+            if (PlayerPrefs.GetInt("UseWii") == 1)
+                WiiToggle.isOn = true;
+            else
+                WiiToggle.isOn = false;
+            Wii = PlayerPrefs.GetInt("UseWii");
+        }
     }
     public void ToggleWii()
     {
