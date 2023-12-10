@@ -34,4 +34,8 @@ public class LoadScene : MonoBehaviour
         GameObject.FindGameObjectWithTag("PreGame").gameObject.SetActive(false);
         StartCoroutine(TextController.GetComponent<Timer>().Count());
     }
+    public void LoadControlSchemes()
+    {
+        SceneManager.LoadScene(3);
+    }
 }

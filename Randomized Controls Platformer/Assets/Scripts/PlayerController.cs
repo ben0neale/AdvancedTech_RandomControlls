@@ -19,8 +19,7 @@ public class PlayerController : MonoBehaviour
     Timer TimerRef;
     bool CanMove = false;
 
-    private InputMaster inputMaster;
-    private PlayerInput playerInput;
+    PlayerInput playerInput;
     private Rigidbody2D RB;
     private GroundCheck groundCheckRef;
 
@@ -37,8 +36,8 @@ public class PlayerController : MonoBehaviour
 
     WiimoteApi.Wiimote wiiRemote;
     int num;
-    bool wiiControls1 = false;
-    bool wiiControls2 = false;
+    public bool wiiControls1 = false;
+    public bool wiiControls2 = false;
 
     int random;
     public bool KeyboardOnly;
@@ -72,9 +71,9 @@ public class PlayerController : MonoBehaviour
         actionMaps.Add("Controller Controls 2");
         actionMaps.Add("Controller Controls 3");
 
-        controls.Add("Controls - Mouse And Keyboard:\nRight - D\nLeft - A\nJump - Space");
-        controls.Add("Controls - Mouse And Keyboard:\nRight - A\nLeft - D\nJump - Space");
-        controls.Add("Controls - Mouse And Keyboard:\nRight - W\nLeft - S\nJump - Space");
+        controls.Add("Controls - Keyboard:\nRight - D\nLeft - A\nJump - Space");
+        controls.Add("Controls - Keyboard:\nRight - A\nLeft - D\nJump - Space");
+        controls.Add("Controls - Keyboard:\nRight - W\nLeft - S\nJump - Space");
 
         controls.Add("Controls - Xbox Controller:\nRight - Stick Right\nLeft - Stick Left\nJump - A");
         controls.Add("Controls - Xbox Controller:\nRight - Stick Left\nLeft - Stick Right\nJump - Y");

@@ -84,7 +84,9 @@ public class HighScoreTable : MonoBehaviour
             case 2: rankString = "2ND"; break;
             case 3: rankString = "3RD"; break;
         }
-        entryTransform.Find("PosText").GetComponent<TextMeshProUGUI>().text = rankString;
+        string controlscheme = highscoreEntry.controls;
+
+        entryTransform.Find("PosText").GetComponent<TextMeshProUGUI>().text = rankString + " (" + controlscheme + ")";
 
         float time = highscoreEntry.time;
 
@@ -96,10 +98,10 @@ public class HighScoreTable : MonoBehaviour
         transformList.Add(entryTransform);
     }
 
-    public void AddHighscoreEntry(float time, string name)
+    public void AddHighscoreEntry(float time, string name, string controlScheme)
     {
         //Create highscore entry
-        HighScoreEntry highscoreentry = new HighScoreEntry { time = time, name = name };
+        HighScoreEntry highscoreentry = new HighScoreEntry { time = time, name = name , controls = controlScheme};
 
         if (!PlayerPrefs.HasKey(PlayerPrefOptions[highscoretableValue]))
         {
@@ -143,6 +145,7 @@ public class HighScoreTable : MonoBehaviour
     {
         public float time;
         public string name;
+        public string controls;
     }
 
 }

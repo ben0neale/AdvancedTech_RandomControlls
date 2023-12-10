@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 
 public class Timer : MonoBehaviour
 {
@@ -15,12 +16,16 @@ public class Timer : MonoBehaviour
     ScoreBoard scoreboardRef;
     [SerializeField] GameObject HighScoreTable;
     HighScoreTable highscoreTable;
+    GameObject Player;
+    PlayerController playerref;
     private float time = 0;
     private int characterSize = 3;
     public bool CountDownFinished = false;
 
     void Start()
     {
+        Player = GameObject.FindGameObjectWithTag("Player");
+        playerref = Player.GetComponent<PlayerController>();
         PreGame.SetActive(true);
         time = 0;
         highscoreTable = HighScoreTable.GetComponent<HighScoreTable>();
@@ -58,7 +63,12 @@ public class Timer : MonoBehaviour
     public void UpdateLeaderboard(string name)
     {
         TextInput.SetActive(false);
-        highscoreTable.AddHighscoreEntry(time, name);
+        if (!playerref.wiiControls1 && !playerref.wiiControls2)
+            highscoreTable.AddHighscoreEntry(time, name, Player.GetComponent<PlayerInput>().currentActionMap.name.Substring(7));
+        else if (playerref.wiiControls1)
+            highscoreTable.AddHighscoreEntry(time, name, "Controls 1");
+        else if (playerref.wiiControls2)
+            highscoreTable.AddHighscoreEntry(time, name, "Controls 2");
         highscoreTable.LoadHighScoreTable();
     }
     public IEnumerator Count()
