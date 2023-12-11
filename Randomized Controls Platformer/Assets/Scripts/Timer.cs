@@ -47,6 +47,10 @@ public class Timer : MonoBehaviour
             {
                 characterSize = 4;
             }
+            else if (time > 99.9)
+            {
+                characterSize = 5;
+            }
             timer.text = time.ToString().Substring(0, characterSize);
         }       
     }
@@ -64,7 +68,7 @@ public class Timer : MonoBehaviour
     {
         TextInput.SetActive(false);
         if (!playerref.wiiControls1 && !playerref.wiiControls2)
-            highscoreTable.AddHighscoreEntry(time, name, Player.GetComponent<PlayerInput>().currentActionMap.name.Substring(7));
+            highscoreTable.AddHighscoreEntry(time, name, Player.GetComponent<PlayerInput>().currentActionMap.name.Substring(11));
         else if (playerref.wiiControls1)
             highscoreTable.AddHighscoreEntry(time, name, "Controls 1");
         else if (playerref.wiiControls2)

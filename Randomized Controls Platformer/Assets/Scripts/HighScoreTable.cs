@@ -8,14 +8,14 @@ using UnityEngine.UIElements;
 
 public class HighScoreTable : MonoBehaviour
 {
-    private Transform entryContainer;
+    [SerializeField] Transform entryContainer;
     private Transform entryTemplate;
     private List<Transform> highscoreEntryTransformList;
     private List<string> PlayerPrefOptions;
     [SerializeField] GameObject dropdownMenu;
     [SerializeField] GameObject GameStateController;
     GameStateController gameStateControllerref;
-    
+    [SerializeField] GameObject EnterName;
 
     public int highscoretableValue = 0;
 
@@ -30,11 +30,21 @@ public class HighScoreTable : MonoBehaviour
 
         entryTemplate.gameObject.SetActive(false);
 
-        dropdownMenu.GetComponent<TMP_Dropdown>().onValueChanged.AddListener(delegate { SetHighScoreTableValue(dropdownMenu.GetComponent<TMP_Dropdown>().value); });
+        dropdownMenu.GetComponent<TMP_Dropdown>().onValueChanged.AddListener(delegate { SetHighScoreTableValue(dropdownMenu.GetComponent<TMP_Dropdown>().value); LoadHighScoreTable(); });
+    }
+
+    public void ResetScoreBoard()
+    {
+        for (int i = 1; i < entryContainer.childCount; i++)
+        {
+            Destroy(entryContainer.GetChild(i).gameObject);
+        }
+        EnterName.SetActive(true);
     }
 
     public void LoadHighScoreTable()
     {
+        print("HST: " + highscoretableValue);
         for (int i = 1; i < entryContainer.childCount; i++)
         {
             Destroy(entryContainer.GetChild(i).gameObject);
@@ -126,7 +136,7 @@ public class HighScoreTable : MonoBehaviour
     public void SetHighScoreTableValue(int value)
     {
         highscoretableValue = value;
-        LoadHighScoreTable();       
+        //LoadHighScoreTable();       
     }
     public void ClearTable()
     {

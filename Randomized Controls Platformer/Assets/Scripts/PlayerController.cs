@@ -42,6 +42,7 @@ public class PlayerController : MonoBehaviour
     int random;
     public bool KeyboardOnly;
     HighScoreTable HST;
+    [SerializeField] GameObject PreGame;
 
 
     // Start is called before the first frame update
@@ -118,6 +119,15 @@ public class PlayerController : MonoBehaviour
             WiiRemoteMovement();
             WiiRemoteJump();
         }
+    }
+    public void RestartLevel()
+    {
+        highscoreTable.SetActive(false);
+        //OnSwitchAction();
+        CanMove = false;
+        TimerRef.ResetTimer();
+        PreGame.SetActive(true);
+        transform.position = GameObject.FindGameObjectWithTag("StartPos").transform.position;
     }
 
     void InitWiiRemotes()
@@ -268,9 +278,6 @@ public class PlayerController : MonoBehaviour
     int GetRandom()
     {
         int x = -1;
-        Debug.Log("keyboard " + PlayerPrefs.GetInt("UseKM"));
-        Debug.Log("controller " + PlayerPrefs.GetInt("UseController"));
-        Debug.Log("WIi " + PlayerPrefs.GetInt("UseWii"));
         if (PlayerPrefs.GetInt("UseWii") == 1 && PlayerPrefs.GetInt("UseController") == 1 && PlayerPrefs.GetInt("UseKM") == 1)
             x = Random.Range(0, actionMaps.Count + 2);
         else if (PlayerPrefs.GetInt("UseController") == 1 && PlayerPrefs.GetInt("UseKM") == 1)
@@ -291,8 +298,7 @@ public class PlayerController : MonoBehaviour
             x = Random.Range(3, 6);
         else if (PlayerPrefs.GetInt("UseWii") == 1)
             x = Random.Range(actionMaps.Count, actionMaps.Count + 2);
-
-        Debug.Log(x);
+        print(x);
         return x;
         
     }
@@ -329,10 +335,11 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.collider.CompareTag("Finish"))
         {
+            highscoreTable.GetComponent<HighScoreTable>().ResetScoreBoard();
             transform.position = startSpot.transform.position;
-            OnSwitchAction();
+            //OnSwitchAction();
             highscoreTable.SetActive(true);
-            TimerRef.ResetTimer();
+            //TimerRef.ResetTimer();
         }
         else if (collision.gameObject.CompareTag("Respawn"))
         {

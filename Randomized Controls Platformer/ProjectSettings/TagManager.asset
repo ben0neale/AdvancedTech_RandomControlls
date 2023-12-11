@@ -8,6 +8,7 @@ TagManager:
   - ShootPos
   - Bullet
   - PreGame
+  - StartPos
   layers:
   - Default
   - TransparentFX
