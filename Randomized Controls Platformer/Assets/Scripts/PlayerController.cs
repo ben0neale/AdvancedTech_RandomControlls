@@ -4,6 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -74,7 +75,7 @@ public class PlayerController : MonoBehaviour
 
         controls.Add("Controls - Keyboard:\nRight - D\nLeft - A\nJump - Space");
         controls.Add("Controls - Keyboard:\nRight - A\nLeft - D\nJump - Space");
-        controls.Add("Controls - Keyboard:\nRight - W\nLeft - S\nJump - Space");
+        controls.Add("Controls - Keyboard:\nRight - W\nLeft - S\nJump - CTRL");
 
         controls.Add("Controls - Xbox Controller:\nRight - Stick Right\nLeft - Stick Left\nJump - A");
         controls.Add("Controls - Xbox Controller:\nRight - Stick Left\nLeft - Stick Right\nJump - Y");
@@ -122,12 +123,13 @@ public class PlayerController : MonoBehaviour
     }
     public void RestartLevel()
     {
-        highscoreTable.SetActive(false);
-        //OnSwitchAction();
-        CanMove = false;
-        TimerRef.ResetTimer();
-        PreGame.SetActive(true);
-        transform.position = GameObject.FindGameObjectWithTag("StartPos").transform.position;
+        //highscoreTable.SetActive(false);
+
+        //CanMove = false;
+        //TimerRef.ResetTimer();
+        //PreGame.SetActive(true);
+        //transform.position = GameObject.FindGameObjectWithTag("StartPos").transform.position;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     void InitWiiRemotes()

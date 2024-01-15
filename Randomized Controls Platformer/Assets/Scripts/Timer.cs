@@ -24,6 +24,7 @@ public class Timer : MonoBehaviour
 
     void Start()
     {
+        time = 0;
         Player = GameObject.FindGameObjectWithTag("Player");
         playerref = Player.GetComponent<PlayerController>();
         PreGame.SetActive(true);
